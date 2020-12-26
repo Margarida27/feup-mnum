@@ -9,13 +9,13 @@ def trapeze_method(xi, xf, n, f):
 
 
 # e = (S'' - S') / (2 * order_number - 1) -> neste caso order_number = 2
-# S'' - S' = 15 * e''
+# S'' - S' = 3 * e''
 # S'' <=> solução com h'' = h / 4 (n * 4)
 # S' <=> solução com h' = h / 2 (n * 2)
 def trapeze_abs_error(xi, xf, n, f):
     s1 = trapeze_method(xi, xf, n * 2, f)
     s2 = trapeze_method(xi, xf, n * 4, f)
-    e = (s2 - s1) / 15
+    e = (s2 - s1) / 3
     return e
 
 
