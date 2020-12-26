@@ -29,31 +29,48 @@ def gradient_method(x, y, h, f, dx, dy, iterations):
         print("no. iteration: {} -> x = {} y = {} f(x,y) = {} ".format(i, x, y, f(x, y)))
 
 
-# seja f(x,y) a função a minimizar
-# seja dfx(x,y) a função resultante de derivar parcialmente f(x,y) em ordem a x
-# seja dfy(x,y) a função resultante de derivar parcialmente f(x,y) em ordem a y
-# seja H(x,y) a sua matriz hessiana [[dfxx, dfxy],
-#                                    [dfyx, dfyy]]
-# seja detH o determinante da matriz Hessiana inversa (que varia ao longo do método!)
-# então xn = x - (dfyy(x, y) * dfx(x, y) - dfxy(x, y) * dfy(x, y)) / detH
-#       yn = y - (-dfxy(x, y) * dfx(x, y) - dfxx(x, y) * dfy(x, y)) / detH
+# f(x,y) -> função a minimizar
+#
+# df_x(x,y) -> função resultante de derivar parcialmente f(x,y) em ordem a x
+#
+# df_y(x,y) -> função resultante de derivar parcialmente f(x,y) em ordem a y
+#
+# H(x,y) -> matriz hessiana [df_xx, df_xy]
+#                           [df_yx, df_yy]
+#
+# detH -> determinante da matriz Hessiana inversa (que varia ao longo do método!)
+#
+# no Maxima -> H: hessian(matrix) -> H_: invert(H) -> detH: determinant(H_)
+#
+# então -> xn = x - (df_yy(x, y) * df_x(x, y) - df_xy(x, y) * df_y(x, y)) / detH
+#
+#       -> yn = y - (-df_yx(x, y) * df_x(x, y) - df_xx(x, y) * df_y(x, y)) / detH
 
 
 def quadric_method():
     return
 
 
-# escolhendo um lambda
-# seja f(x,y) a função a minimizar
-# seja dfx(x,y) a função resultante de derivar parcialmente f(x,y) em ordem a x
-# seja dfy(x,y) a função resultante de derivar parcialmente f(x,y) em ordem a y
-# seja H(x,y) a sua matriz hessiana [[dfxx, dfxy],
-#                                    [dfyx, dfyy]]
-# seja detH o determinante da matriz Hessiana inversa (que varia ao longo do método!)
-# então xn = x - (dfyy(x, y) * dfx(x, y) - dfxy(x, y) * dfy(x, y)) / detH - lambda * dfx(x,y)
-#       yn = y - (-dfxy(x, y) * dfx(x, y) - dfxx(x, y) * dfy(x, y)) / detH - lambda * dfx(x,y)
-# se f(x,y) > f(xn,yn) -> lambda /=2 e o passo não é efetivado
-# senão lambda *=2 e x = xn e y = yn
+# f(x,y) -> função a minimizar
+#
+# df_x(x,y) -> função resultante de derivar parcialmente f(x,y) em ordem a x
+#
+# df_y(x,y) -> função resultante de derivar parcialmente f(x,y) em ordem a y
+#
+# H(x,y) -> matriz hessiana [df_xx, df_xy]
+#                           [df_yx, df_yy]
+#
+# detH -> determinante da matriz Hessiana inversa (que varia ao longo do método!)
+#
+# no Maxima -> H: hessian(matrix) -> H_: invert(H) -> detH: determinant(H_)
+#
+# então -> xn = x - (df_yy(x, y) * df_x(x, y) - df_xy(x, y) * df_y(x, y)) / detH - lambda * df_x(x,y)
+#
+#       -> yn = y - (-df_yx(x, y) * df_x(x, y) - df_xx(x, y) * df_y(x, y)) / detH - lambda * df_y(x,y)
+#
+# se f(xn,yn) < f(x,y) -> lambda /=2
+#
+# senão -> lambda *=2
 
 
 def levemberg_method():
