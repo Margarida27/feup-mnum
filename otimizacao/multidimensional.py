@@ -19,13 +19,12 @@ def gradient_method(x, y, h, f, dx, dy, iterations):
     for i in range(iterations):
         xn = x - h * dx(x, y)
         yn = y - h * dy(x, y)
-        if not (f(xn, yn) < f(x,
-                              y)):  # se o valor da função não diminuir, h deve ser reduzido e o passo não é efetivado
-            h /= 2
-        else:  # se o valor da função diminuir, h deve ser aumentado e o passo é efetivado
-            x = xn
-            y = yn
+        if f(xn, yn) < f(x, y):
             h *= 2
+        else:
+            h /= 2
+        x = xn
+        y = yn
         print("no. iteration: {} -> x = {} y = {} f(x,y) = {} ".format(i, x, y, f(x, y)))
 
 
@@ -38,13 +37,14 @@ def gradient_method(x, y, h, f, dx, dy, iterations):
 # H(x,y) -> matriz hessiana [df_xx, df_xy]
 #                           [df_yx, df_yy]
 #
-# detH -> determinante da matriz Hessiana inversa (que varia ao longo do método!)
+# no Maxima 1) H: invert(hessian(f))
+#           2) grad: [diff(f,x),diff(f,y)]
+#           3) calcular H.grad
+#           4) hx(x,y) = (H.grad)[1]
+#           5) hy(x,y) = (H.grad)[2]
 #
-# no Maxima -> H: hessian(matrix) -> H_: invert(H) -> detH: determinant(H_)
-#
-# então -> xn = x - (df_yy(x, y) * df_x(x, y) - df_xy(x, y) * df_y(x, y)) / detH
-#
-#       -> yn = y - (-df_yx(x, y) * df_x(x, y) - df_xx(x, y) * df_y(x, y)) / detH
+# então -> xn = x - hx(x,y)
+#       -> yn = y - hy(x,y)
 
 
 def quadric_method():
@@ -60,17 +60,18 @@ def quadric_method():
 # H(x,y) -> matriz hessiana [df_xx, df_xy]
 #                           [df_yx, df_yy]
 #
-# detH -> determinante da matriz Hessiana inversa (que varia ao longo do método!)
+# no Maxima 1) H: invert(hessian(f))
+#           2) grad: [diff(f,x),diff(f,y)]
+#           3) calcular H.grad
+#           4) hx(x,y) = (H.grad)[1]
+#           5) hy(x,y) = (H.grad)[2]
 #
-# no Maxima -> H: hessian(matrix) -> H_: invert(H) -> detH: determinant(H_)
+# então -> xn = x - hx(x,y) + lambda * df_x(x,y)
+#       -> yn = y - hy(x,y) + lambda * df_y(x,y)
 #
-# então -> xn = x - (df_yy(x, y) * df_x(x, y) - df_xy(x, y) * df_y(x, y)) / detH - lambda * df_x(x,y)
-#
-#       -> yn = y - (-df_yx(x, y) * df_x(x, y) - df_xx(x, y) * df_y(x, y)) / detH - lambda * df_y(x,y)
-#
-# se f(xn,yn) < f(x,y) -> lambda /=2
-#
-# senão -> lambda *=2
+# se f(xn,yn) < f(x,y) -> lambda *=2
+# senão -> lambda /=2
+# para calcular o máximo seria o contrário (if f(xn,yn) > f(x,y) lambda *=2 else lambda /= 2)
 
 
 def levemberg_method():
