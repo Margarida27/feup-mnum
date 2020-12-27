@@ -21,10 +21,10 @@ def gradient_method(x, y, h, f, dx, dy, iterations):
         yn = y - h * dy(x, y)
         if f(xn, yn) < f(x, y):
             h *= 2
+            x = xn
+            y = yn
         else:
             h /= 2
-        x = xn
-        y = yn
         print("no. iteration: {} -> x = {} y = {} f(x,y) = {} ".format(i, x, y, f(x, y)))
 
 
