@@ -69,8 +69,8 @@ def quadric_method():
 # então -> xn = x - hx(x,y) + lambda * df_x(x,y)
 #       -> yn = y - hy(x,y) + lambda * df_y(x,y)
 #
-# se f(xn,yn) < f(x,y) -> lambda *=2
-# senão -> lambda /=2
+# se f(xn,yn) < f(x,y) -> lambda /=2
+# senão -> lambda *=2
 # para calcular o máximo seria o contrário (if f(xn,yn) > f(x,y) lambda *=2 else lambda /= 2)
 
 
