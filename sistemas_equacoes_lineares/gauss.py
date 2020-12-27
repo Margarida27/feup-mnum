@@ -1,5 +1,15 @@
 from copy import deepcopy
 
+# NO MAXIMA: RESOLVER O SISTEMA A.x = b
+# 1) load(linearalgebra)
+# 2) A : matrix(...)
+# 3) B : matrix(...)
+# 4) M : addcol(A,B)
+# 5) M : echelon(M)
+# 6) M : rowop(M, linha, coluna, valor que se pretende zerar)
+# 7) repete-se o passo anterior até diagonalizar a matriz
+
+
 def invert_matrix(M):
     temp = deepcopy(M)
     i = 0

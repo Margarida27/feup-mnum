@@ -37,11 +37,11 @@ def gradient_method(x, y, h, f, dx, dy, iterations):
 # H(x,y) -> matriz hessiana [df_xx, df_xy]
 #                           [df_yx, df_yy]
 #
-# no Maxima 1) H: invert(hessian(f))
+# NO MAXIMA 1) H: invert(hessian(f))
 #           2) grad: [diff(f,x),diff(f,y)]
 #           3) calcular H.grad
-#           4) hx(x,y) = (H.grad)[1]
-#           5) hy(x,y) = (H.grad)[2]
+#           4) hx(x,y) = expressão em (H.grad)[1]
+#           5) hy(x,y) = expressão em (H.grad)[2]
 #
 # então -> xn = x - hx(x,y)
 #       -> yn = y - hy(x,y)
@@ -60,11 +60,11 @@ def quadric_method():
 # H(x,y) -> matriz hessiana [df_xx, df_xy]
 #                           [df_yx, df_yy]
 #
-# no Maxima 1) H: invert(hessian(f))
+# NO MAXIMA 1) H: invert(hessian(f))
 #           2) grad: [diff(f,x),diff(f,y)]
 #           3) calcular H.grad
-#           4) hx(x,y) = (H.grad)[1]
-#           5) hy(x,y) = (H.grad)[2]
+#           4) hx(x,y) = expressão em (H.grad)[1]
+#           5) hy(x,y) = expressão em (H.grad)[2]
 #
 # então -> xn = x - hx(x,y) + lambda * df_x(x,y)
 #       -> yn = y - hy(x,y) + lambda * df_y(x,y)
