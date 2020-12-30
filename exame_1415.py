@@ -60,6 +60,7 @@ def bissection(a,b):
 
 
 if __name__ == '__main__':
+
     # EX 1
     # euler(5,3,0.4)
 
