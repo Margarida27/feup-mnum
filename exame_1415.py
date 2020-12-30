@@ -33,7 +33,7 @@ def euler(t, T, h):
 
 # EX 3
 # a)
-# dar plot das derivadas das formulas de recorrência no Maxima
+# dar plot das derivadas das fórmulas de recorrência no Maxima
 # se |derivada|<1 no intervalo da raíz, então a fórmula converge para essa raíz
 # b)
 def rec(x): return 2*m.log(2*x)
