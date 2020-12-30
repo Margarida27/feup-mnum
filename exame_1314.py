@@ -54,6 +54,7 @@ def aurea(x1,x2):
 
 
 if __name__ == '__main__':
+    
     # EX 1
     # picard_peano(4.0)
 
